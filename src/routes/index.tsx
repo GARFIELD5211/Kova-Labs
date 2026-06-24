@@ -506,7 +506,7 @@ function SplitReveal({
   return (
     <div ref={ref} className={className}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.25em] pb-[0.3em]">
+        <span key={i} className="inline-block overflow-hidden mr-[0.15em] px-[0.08em] pb-[0.2em]">
           <motion.span
             className="inline-block"
             initial={{ opacity: 0, y: 40, rotateX: 15 }}
@@ -769,12 +769,11 @@ function Services() {
   return (
     <section id="services" className="container-x py-16 md:py-40">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-12 mb-10 md:mb-16">
+        <div className="grid md:grid-cols-12 gap-8 mb-8 md:mb-12">
           <div className="md:col-span-5">
-            <SectionLabel no="03" label="Capabilities" />              <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
+            <SectionLabel no="03" label="Capabilities" />              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05]">
                 <SplitReveal text="Six disciplines." />
-                <br />
-                <span className="italic text-muted-foreground">
+                <span className="italic text-muted-foreground block">
                   <SplitReveal text="One operating standard." staggerDelay={0.03} delay={0.3} />
                 </span>
               </h2>
@@ -789,10 +788,10 @@ function Services() {
         </div>
       </Reveal>
 
-      <StaggerReveal staggerDelay={0.06} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border rounded-2xl overflow-hidden">
+      <StaggerReveal staggerDelay={0.06} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {SERVICES.map((s) => (
             <StaggerItem key={s.no} variant="scaleIn">
-              <div className="group relative h-full border-r border-b border-border p-5 md:p-8 lg:p-10 bg-background transition-all duration-500 hover:bg-surface hover:border-accent/20">
+              <div className="group relative h-full card-rounded p-5 md:p-8 lg:p-10 transition-all duration-500 hover:bg-surface hover:border-accent/20">
                 <div className="flex items-baseline justify-between">
                   <span className="eyebrow">{s.no}</span>
                   <span className="text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent">
@@ -1047,15 +1046,13 @@ function CaseStudyCard({ caseData: c, index: i }: { caseData: typeof CASES[numbe
 function CaseStudies() {
   return (
     <section id="work" className="border-t border-border bg-surface/30">
-      <div className="container-x py-16 md:py-40">
-        <Reveal variant="slideDown">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-20">
-            <div>
-              <SectionLabel no="04" label="Featured work" />
-              <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
+      <div className="container-x py-16 md:py-40">      <Reveal variant="slideDown">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 md:mb-12">
+          <div>
+            <SectionLabel no="04" label="Featured work" />
+              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05]">
                 <SplitReveal text="Outcomes," />
-                <br />
-                <span className="italic text-muted-foreground">
+                <span className="italic text-muted-foreground block">
                   <SplitReveal text="not output." staggerDelay={0.03} delay={0.25} />
                 </span>
               </h2>
@@ -1122,13 +1119,12 @@ function Process() {
   return (
     <section id="process" className="container-x py-16 md:py-40">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-12 mb-10 md:mb-16">
+        <div className="grid md:grid-cols-12 gap-8 mb-8 md:mb-12">
           <div className="md:col-span-5">
             <SectionLabel no="05" label="The process" />
-            <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05]">
               <SplitReveal text="A frictionless" />
-              <br />
-              <span className="italic text-muted-foreground">
+              <span className="italic text-muted-foreground block">
                 <SplitReveal text="roadmap." staggerDelay={0.03} delay={0.25} />
               </span>
             </h2>
@@ -1143,10 +1139,10 @@ function Process() {
         </div>
       </Reveal>
 
-      <StaggerReveal staggerDelay={0.12} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-px md:bg-border md:rounded-2xl md:overflow-hidden md:border md:border-border">
+      <StaggerReveal staggerDelay={0.12} className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {PROCESS.map((p, i) => (
             <StaggerItem key={p.no} variant="rotateIn">
-              <div className="h-full bg-background p-5 md:p-8 lg:p-12 flex flex-col group hover:bg-surface transition-all duration-500 border md:border-0 border-border rounded-xl md:rounded-none">
+              <div className="h-full card-rounded p-5 md:p-8 lg:p-12 flex flex-col group hover:bg-surface transition-all duration-500">
                 <div className="flex items-baseline justify-between">
                   <Floating delay={i * 0.15}>
                     <span className="font-display text-6xl transition-colors duration-500 group-hover:text-accent">
@@ -1187,17 +1183,15 @@ function Stack() {
   return (
     <section id="stack" className="border-y border-border bg-surface/30">
       <div className="container-x py-16 md:py-36">
-        <Reveal variant="slideDown">
-          <div className="grid md:grid-cols-12 gap-12 mb-12 md:mb-20">
-            <div className="md:col-span-5">
-              <SectionLabel no="06" label="Core stack" />
-              <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
-                <SplitReveal text="The tools" />
-                <br />
-                <span className="italic text-muted-foreground">
-                  <SplitReveal text="we trust." staggerDelay={0.03} delay={0.25} />
-                </span>
-              </h2>
+        <Reveal variant="slideDown">        <div className="grid md:grid-cols-12 gap-8 mb-8 md:mb-12">
+          <div className="md:col-span-5">
+            <SectionLabel no="06" label="Core stack" />
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05]">
+              <SplitReveal text="The tools" />
+              <span className="italic text-muted-foreground block">
+                <SplitReveal text="we trust." staggerDelay={0.03} delay={0.25} />
+              </span>
+            </h2>
             </div>
             <div className="md:col-span-6 md:col-start-7 self-end">
               <p className="text-muted-foreground leading-relaxed">
@@ -1209,10 +1203,10 @@ function Stack() {
           </div>
         </Reveal>
 
-        <StaggerReveal staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-px md:bg-border md:rounded-2xl md:overflow-hidden">
+        <StaggerReveal staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {STACK.map((s) => (
               <StaggerItem key={s.group} variant="scaleIn">
-                <div className="bg-background p-5 md:p-8 lg:p-10 group hover:bg-surface transition-all duration-500 border md:border-0 border-border rounded-xl md:rounded-none">
+                <div className="card-rounded p-5 md:p-8 lg:p-10 group hover:bg-surface transition-all duration-500">
                   <div className="eyebrow mb-8 group-hover:text-accent transition-colors duration-500">
                     {s.group}
                   </div>
@@ -1400,13 +1394,12 @@ function Team() {
   return (
     <section id="team" className="container-x py-16 md:py-40">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-12 mb-10 md:mb-16">
+        <div className="grid md:grid-cols-12 gap-8 mb-8 md:mb-12">
           <div className="md:col-span-5">
             <SectionLabel no="07" label="The team" />
-            <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05] tracking-tight">
               <SplitReveal text="The people" />
-              <br />
-              <span className="italic text-muted-foreground">
+              <span className="italic text-muted-foreground block mt-0">
                 <SplitReveal text="behind the work." staggerDelay={0.03} delay={0.25} />
               </span>
             </h2>
@@ -1499,7 +1492,7 @@ function Faq() {
           <div className="grid md:grid-cols-12 gap-12">
             <div className="md:col-span-4">
               <SectionLabel no="08" label="Direct answers" />
-              <h2 className="mt-6 font-display text-4xl md:text-5xl leading-[1.15]">
+              <h2 className="mt-4 font-display text-4xl md:text-5xl leading-[1.05]">
                 No fluff.<br />
                 <span className="italic text-muted-foreground">Just answers.</span>
               </h2>
@@ -1537,12 +1530,10 @@ function Intake() {
           <div className="md:col-span-5">
             <Reveal variant="slideLeft">
               <SectionLabel no="09" label="Intake" />
-              <h2 className="mt-6 font-display text-5xl md:text-7xl leading-[0.98]">
+              <h2 className="mt-4 font-display text-5xl md:text-7xl leading-[0.98]">
                 <SplitReveal text="Let's build" />
-                <br />
                 <SplitReveal text="something that" staggerDelay={0.03} delay={0.2} />
-                <br />
-                <span className="italic text-accent">
+                <span className="italic text-accent block">
                   <SplitReveal text="scales." staggerDelay={0.03} delay={0.4} />
                 </span>
               </h2>

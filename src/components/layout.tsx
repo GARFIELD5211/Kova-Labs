@@ -76,7 +76,7 @@ export function Footer() {
               <span className="font-display text-2xl">Kova Labs</span>
             </div>
             <p className="mt-6 text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Engineered software for ambitious teams. Based in London,
+              Engineered software for ambitious teams. Based in Islamabad,
               shipping worldwide.
             </p>
           </div>
@@ -101,22 +101,22 @@ export function Footer() {
           <div className="md:col-span-3">
             <div className="eyebrow mb-4">Contact</div>
             <a
-              href="mailto:hello@kovalabs.studio"
+              href="mailto:contact@kovalabs.tech"
               className="font-display text-2xl hover:text-accent transition-colors"
             >
-              hello@kovalabs.studio
+              contact@kovalabs.tech
             </a>
             <p className="mt-4 text-sm text-muted-foreground">
-              42 Charlotte Rd<br />Shoreditch, London EC2A
+              Mezzanine Floor, Muzaffar Chamber Plaza<br />Fazal-e-Haq Road, Blue Area, Islamabad
             </p>
           </div>
         </div>
         <div className="mt-16 pt-6 border-t border-border flex flex-col md:flex-row justify-between gap-4 text-xs text-muted-foreground">
           <span>© 2026 Kova Labs Ltd. All rights reserved.</span>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors">Cookies</a>
+            <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-foreground transition-colors">Terms</Link>
+            <Link to="/cookies" className="hover:text-foreground transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
