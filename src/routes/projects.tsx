@@ -5,6 +5,7 @@ import {
   useInView,
   useScroll,
   useTransform,
+  AnimatePresence,
 } from "motion/react";
 import case2 from "@/assets/case-2.jpg";
 import crmProject from "@/assets/crm-project.jpg";
@@ -331,66 +332,127 @@ function PageHero() {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <StaggerItem index={index}>
-      <Link to="/" className="group block">
-        <article className="grid md:grid-cols-12 gap-6 md:gap-10 items-start border-b border-border pb-12 md:pb-16 mb-12 md:mb-16 last:border-0 last:pb-0 last:mb-0">
-          <div className="md:col-span-7 relative overflow-hidden rounded-2xl">
-            <Scroll3D>
-              <motion.img
-                src={project.img}
-                alt={project.client}
-                loading="lazy"
-                width={1600}
-                height={1000}
-                className="w-full aspect-[16/10] object-cover"
-                whileHover={{ scale: 1.04 }}
-                transition={{ duration: 1.2, ease: defaultEase }}
-              />
-              <div className="absolute inset-0 ring-1 ring-inset ring-border/50 rounded-2xl" />
-              <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-all duration-700 rounded-2xl" />
-            </Scroll3D>
-          </div>
+      <article className="grid md:grid-cols-12 gap-6 md:gap-10 items-start border-b border-border pb-16 md:pb-24 mb-16 md:mb-24 last:border-0 last:pb-0 last:mb-0">
+        <div className="md:col-span-7 relative overflow-hidden rounded-2xl">
+          <Scroll3D>
+            <motion.img
+              src={project.img}
+              alt={project.client}
+              loading="lazy"
+              width={1600}
+              height={1000}
+              className="w-full aspect-[16/10] object-cover"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 1.2, ease: defaultEase }}
+            />
+            <div className="absolute inset-0 ring-1 ring-inset ring-border/50 rounded-2xl" />
+            <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-all duration-700 rounded-2xl" />
+          </Scroll3D>
+        </div>
 
-          <div className="md:col-span-5">
+        <div className="md:col-span-5">
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            className="w-full text-left md:cursor-default"
+          >
             <div className="flex items-center justify-between eyebrow">
               <span className="group-hover:text-accent transition-colors duration-300">
                 {project.client}
               </span>
-              <span>{project.year}</span>
+              <div className="flex items-center gap-2">
+                <span>{project.year}</span>
+                <span
+                  className="md:hidden text-muted-foreground transition-transform duration-300"
+                  style={{ transform: expanded ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                >
+                  +
+                </span>
+              </div>
             </div>
 
             <h3 className="mt-6 font-display text-2xl md:text-3xl leading-tight group-hover:text-accent transition-colors duration-300">
               {project.title}
             </h3>
+          </button>
 
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              {project.description}
-            </p>
-
-            <div className="mt-8 flex items-center justify-between gap-4">
-              <div>
-                <div className="text-sm font-medium">{project.metric}</div>
-                <div className="eyebrow mt-0.5">{project.metricLabel}</div>
-              </div>
-              <span className="text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
-                ↗
-              </span>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {project.tags.map((t) => (
-                <span
-                  key={t}
-                  className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground border border-border px-2.5 py-1 rounded-full group-hover:border-accent/30 group-hover:text-accent transition-all duration-300"
+          {/* Mobile: hidden by default, expands on tap */}
+          <div className="md:hidden">
+            <AnimatePresence initial={false}>
+              {expanded && (
+                <motion.div
+                  key="details"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: defaultEase }}
+                  className="overflow-hidden"
                 >
-                  {t}
+                  <div className="pt-4">
+                    <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="mt-6 flex items-center justify-between gap-4">
+                      <div>
+                        <div className="text-sm font-medium">{project.metric}</div>
+                        <div className="eyebrow mt-0.5">{project.metricLabel}</div>
+                      </div>
+                      <span className="text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
+                        ↗
+                      </span>
+                    </div>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground border border-border px-2.5 py-1 rounded-full group-hover:border-accent/30 group-hover:text-accent transition-all duration-300"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Desktop: always visible */}
+          <div className="hidden md:block">
+            <div className="pt-0">
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                {project.description}
+              </p>
+
+              <div className="mt-6 flex items-center justify-between gap-4">
+                <div>
+                  <div className="text-sm font-medium">{project.metric}</div>
+                  <div className="eyebrow mt-0.5">{project.metricLabel}</div>
+                </div>
+                <span className="text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
+                  ↗
                 </span>
-              ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground border border-border px-2.5 py-1 rounded-full group-hover:border-accent/30 group-hover:text-accent transition-all duration-300"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </article>
-      </Link>
+        </div>
+      </article>
     </StaggerItem>
   );
 }

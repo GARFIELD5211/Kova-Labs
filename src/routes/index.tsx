@@ -287,7 +287,7 @@ function ParallaxDivider() {
   const y = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
 
   return (
-    <div ref={ref} className="relative h-32 md:h-40 overflow-hidden">
+    <div ref={ref} className="relative h-16 md:h-40 overflow-hidden">
       <motion.div
         style={{ y }}
         className="absolute inset-0 flex items-center justify-center"
@@ -639,38 +639,35 @@ function Hero() {
           A small studio of senior engineers shipping bespoke web platforms,
           AI tooling and revenue-grade commerce for founders who refuse
           mediocre software.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: defaultEase }}
-          className="mt-10 flex flex-wrap items-center gap-4"
-        >
-          <MagneticButton
-            href="#intake"
-            className="bg-foreground text-background px-6 py-4 hover:bg-accent hover:text-background"
+        </motion.p>          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2, ease: defaultEase }}
+            className="mt-10 flex flex-wrap items-center gap-4"
           >
-            Start a project
-            <span className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
-              →
-            </span>
-          </MagneticButton>
-          <MagneticButton
-            href="#work"
-            className="border border-border-strong px-6 py-4 hover:bg-surface hover:border-foreground/30"
-          >
-            View selected work
-            <span className="opacity-60 group-hover:opacity-100">↓</span>
-          </MagneticButton>
+            <MagneticButton
+              href="#intake"
+              className="bg-foreground text-background px-6 py-4 hover:bg-accent hover:text-background"
+            >
+              Start a project
+              <span className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                →
+              </span>
+            </MagneticButton>
+            <MagneticButton
+              href="#work"
+              className="border border-border-strong px-6 py-4 hover:bg-surface hover:border-foreground/30"
+            >
+              View selected work
+              <span className="opacity-60 group-hover:opacity-100">↓</span>
+            </MagneticButton>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 1.7 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        {/* Scroll indicator */}          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 1.7 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <Floating>
             <div className="flex flex-col items-center gap-2">
@@ -770,9 +767,9 @@ const SERVICES = [
 
 function Services() {
   return (
-    <section id="services" className="container-x py-28 md:py-40">
+    <section id="services" className="container-x py-16 md:py-40">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-12 mb-16">
+        <div className="grid md:grid-cols-12 gap-12 mb-10 md:mb-16">
           <div className="md:col-span-5">
             <SectionLabel no="03" label="Capabilities" />              <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
                 <SplitReveal text="Six disciplines." />
@@ -792,17 +789,17 @@ function Services() {
         </div>
       </Reveal>
 
-      <StaggerReveal staggerDelay={0.06} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border rounded-2xl overflow-hidden">
+      <StaggerReveal staggerDelay={0.06} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border rounded-2xl overflow-hidden">
           {SERVICES.map((s) => (
             <StaggerItem key={s.no} variant="scaleIn">
-              <div className="group relative h-full border-r border-b border-border p-8 lg:p-10 bg-background transition-all duration-500 hover:bg-surface hover:border-accent/20">
+              <div className="group relative h-full border-r border-b border-border p-5 md:p-8 lg:p-10 bg-background transition-all duration-500 hover:bg-surface hover:border-accent/20">
                 <div className="flex items-baseline justify-between">
                   <span className="eyebrow">{s.no}</span>
                   <span className="text-muted-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent">
                     ↗
                   </span>
                 </div>
-                <h3 className="mt-10 font-display text-2xl leading-snug">
+                <h3 className="mt-6 md:mt-10 font-display text-xl md:text-2xl leading-snug">
                   {s.title}
                 </h3>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
@@ -910,12 +907,149 @@ const CASES = [
   },
 ];
 
+/* ---------- CaseStudyCard ---------- */
+
+function CaseStudyCard({ caseData: c, index: i }: { caseData: typeof CASES[number]; index: number }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <article className="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
+      <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
+        <ScrollDepth3D depth={12}>
+          <div className="relative overflow-hidden group rounded-2xl">
+            <motion.img
+              src={c.img}
+              alt={c.client}
+              loading="lazy"
+              width={1600}
+              height={1000}
+              className="w-full aspect-[16/10] object-cover"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 1.2, ease: defaultEase }}
+            />
+            <div className="absolute inset-0 ring-1 ring-inset ring-border/50 rounded-2xl" />
+            <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-all duration-700 rounded-2xl" />
+          </div>
+        </ScrollDepth3D>
+      </div>
+
+      <div className={`md:col-span-5 ${i % 2 ? "md:order-1" : ""}`}>
+        <div className="flex items-center justify-between eyebrow">
+          <span>{c.client}</span>
+          <div className="flex items-center gap-2">
+            <span>{c.year}</span>
+            <span
+              className="md:hidden text-muted-foreground transition-transform duration-300"
+              style={{ transform: expanded ? 'rotate(45deg)' : 'rotate(0deg)' }}
+            >
+              +
+            </span>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="w-full text-left md:cursor-default"
+        >
+          <h3 className="mt-4 md:mt-6 font-display text-2xl md:text-4xl leading-tight">
+            {c.title}
+          </h3>
+        </button>
+
+        <div className="mt-6 md:mt-10 grid grid-cols-2 gap-4 md:gap-6 border-y border-border py-4 md:py-6">
+          <div>
+            <div className="font-display text-4xl">
+              <CountUp
+                end={parseFloat(c.metric)}
+                suffix={c.metricSuffix || ""}
+                prefix={c.metricPrefix || ""}
+                decimals={c.metric.includes(".") ? 1 : 0}
+              />
+            </div>
+            <div className="eyebrow mt-1">{c.metricLabel}</div>
+          </div>
+          <div className="self-end">
+            <div className="text-sm">{c.secondary}</div>
+          </div>
+        </div>
+
+        {/* Mobile: hidden by default, expands on tap */}
+        <div className="md:hidden">
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                key="details"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: defaultEase }}
+                className="overflow-hidden"
+              >
+                <dl className="mt-6 space-y-5 text-sm">
+                  <div>
+                    <dt className="eyebrow mb-1">Problem</dt>
+                    <dd className="text-muted-foreground leading-relaxed">{c.problem}</dd>
+                  </div>
+                  <div>
+                    <dt className="eyebrow mb-1">Solution</dt>
+                    <dd className="text-muted-foreground leading-relaxed">{c.solution}</dd>
+                  </div>
+                  <div>
+                    <dt className="eyebrow mb-2">Stack</dt>
+                    <dd className="flex flex-wrap gap-2">
+                      {c.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="font-mono text-[10px] tracking-widest uppercase text-foreground border border-border px-2.5 py-1 rounded-full"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                </dl>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop: always visible */}
+        <div className="hidden md:block">
+          <dl className="mt-8 space-y-5 text-sm">
+            <div>
+              <dt className="eyebrow mb-1">Problem</dt>
+              <dd className="text-muted-foreground leading-relaxed">{c.problem}</dd>
+            </div>
+            <div>
+              <dt className="eyebrow mb-1">Solution</dt>
+              <dd className="text-muted-foreground leading-relaxed">{c.solution}</dd>
+            </div>
+            <div>
+              <dt className="eyebrow mb-2">Stack</dt>
+              <dd className="flex flex-wrap gap-2">
+                {c.stack.map((s) => (
+                  <span
+                    key={s}
+                    className="font-mono text-[10px] tracking-widest uppercase text-foreground border border-border px-2.5 py-1 rounded-full"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function CaseStudies() {
   return (
     <section id="work" className="border-t border-border bg-surface/30">
-      <div className="container-x py-28 md:py-40">
+      <div className="container-x py-16 md:py-40">
         <Reveal variant="slideDown">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-20">
             <div>
               <SectionLabel no="04" label="Featured work" />
               <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
@@ -936,80 +1070,10 @@ function CaseStudies() {
           </div>
         </Reveal>
 
-        <div className="flex flex-col gap-28">
+        <div className="flex flex-col gap-16 md:gap-28">
           {CASES.map((c, i) => (
             <Reveal key={c.client} variant="fadeIn" threshold={0.1}>
-              <article className="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
-                <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-                  <ScrollDepth3D depth={12}>
-                    <div className="relative overflow-hidden group rounded-2xl">
-                      <motion.img
-                        src={c.img}
-                        alt={c.client}
-                        loading="lazy"
-                        width={1600}
-                        height={1000}
-                        className="w-full aspect-[16/10] object-cover"
-                        whileHover={{ scale: 1.04 }}
-                        transition={{ duration: 1.2, ease: defaultEase }}
-                      />
-                      <div className="absolute inset-0 ring-1 ring-inset ring-border/50 rounded-2xl" />
-                      <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-all duration-700 rounded-2xl" />
-                    </div>
-                  </ScrollDepth3D>
-                </div>
-
-                <div className={`md:col-span-5 ${i % 2 ? "md:order-1" : ""}`}>
-                  <div className="flex items-center justify-between eyebrow">
-                    <span>{c.client}</span>
-                    <span>{c.year}</span>
-                  </div>
-                  <h3 className="mt-6 font-display text-3xl md:text-4xl leading-tight">
-                    {c.title}
-                  </h3>
-
-                  <div className="mt-10 grid grid-cols-2 gap-6 border-y border-border py-6">
-                    <div>
-                      <div className="font-display text-4xl">
-                        <CountUp
-                          end={parseFloat(c.metric)}
-                          suffix={c.metricSuffix || ""}
-                          prefix={c.metricPrefix || ""}
-                          decimals={c.metric.includes(".") ? 1 : 0}
-                        />
-                      </div>
-                      <div className="eyebrow mt-1">{c.metricLabel}</div>
-                    </div>
-                    <div className="self-end">
-                      <div className="text-sm">{c.secondary}</div>
-                    </div>
-                  </div>
-
-                  <dl className="mt-8 space-y-5 text-sm">
-                    <div>
-                      <dt className="eyebrow mb-1">Problem</dt>
-                      <dd className="text-muted-foreground leading-relaxed">{c.problem}</dd>
-                    </div>
-                    <div>
-                      <dt className="eyebrow mb-1">Solution</dt>
-                      <dd className="text-muted-foreground leading-relaxed">{c.solution}</dd>
-                    </div>
-                    <div>
-                      <dt className="eyebrow mb-2">Stack</dt>
-                      <dd className="flex flex-wrap gap-2">
-                        {c.stack.map((s) => (
-                          <span
-                            key={s}
-                            className="font-mono text-[10px] tracking-widest uppercase text-foreground border border-border px-2.5 py-1 rounded-full"
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-              </article>
+              <CaseStudyCard caseData={c} index={i} />
             </Reveal>
           ))}
         </div>
@@ -1056,9 +1120,9 @@ const PROCESS = [
 
 function Process() {
   return (
-    <section id="process" className="container-x py-28 md:py-40">
+    <section id="process" className="container-x py-16 md:py-40">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-12 mb-16">
+        <div className="grid md:grid-cols-12 gap-12 mb-10 md:mb-16">
           <div className="md:col-span-5">
             <SectionLabel no="05" label="The process" />
             <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
@@ -1079,10 +1143,10 @@ function Process() {
         </div>
       </Reveal>
 
-      <StaggerReveal staggerDelay={0.12} className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+      <StaggerReveal staggerDelay={0.12} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-px md:bg-border md:rounded-2xl md:overflow-hidden md:border md:border-border">
           {PROCESS.map((p, i) => (
             <StaggerItem key={p.no} variant="rotateIn">
-              <div className="h-full bg-background p-10 md:p-12 flex flex-col group hover:bg-surface transition-all duration-500">
+              <div className="h-full bg-background p-5 md:p-8 lg:p-12 flex flex-col group hover:bg-surface transition-all duration-500 border md:border-0 border-border rounded-xl md:rounded-none">
                 <div className="flex items-baseline justify-between">
                   <Floating delay={i * 0.15}>
                     <span className="font-display text-6xl transition-colors duration-500 group-hover:text-accent">
@@ -1122,9 +1186,9 @@ const STACK = [
 function Stack() {
   return (
     <section id="stack" className="border-y border-border bg-surface/30">
-      <div className="container-x py-28 md:py-36">
+      <div className="container-x py-16 md:py-36">
         <Reveal variant="slideDown">
-          <div className="grid md:grid-cols-12 gap-12 mb-20">
+          <div className="grid md:grid-cols-12 gap-12 mb-12 md:mb-20">
             <div className="md:col-span-5">
               <SectionLabel no="06" label="Core stack" />
               <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
@@ -1145,10 +1209,10 @@ function Stack() {
           </div>
         </Reveal>
 
-        <StaggerReveal staggerDelay={0.1} className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
+        <StaggerReveal staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-px md:bg-border md:rounded-2xl md:overflow-hidden">
             {STACK.map((s) => (
               <StaggerItem key={s.group} variant="scaleIn">
-                <div className="bg-background p-10 group hover:bg-surface transition-all duration-500">
+                <div className="bg-background p-5 md:p-8 lg:p-10 group hover:bg-surface transition-all duration-500 border md:border-0 border-border rounded-xl md:rounded-none">
                   <div className="eyebrow mb-8 group-hover:text-accent transition-colors duration-500">
                     {s.group}
                   </div>
@@ -1241,9 +1305,13 @@ const TEAM: TeamMember[] = [
 
 function TeamCard({ member, index }: { member: TeamMember; index: number }) {
   const avatarSrc = getInitialsAvatar(member.name);
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="group">
+    <div
+      className="group cursor-pointer md:cursor-default"
+      onClick={() => setExpanded((v) => !v)}
+    >
       <div className="relative overflow-hidden bg-surface rounded-2xl">
         <motion.img
           src={avatarSrc}
@@ -1265,13 +1333,42 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
             </div>
             <div className="text-xs text-muted-foreground mt-1">{member.role}</div>
           </div>
-          <span className="eyebrow transition-colors duration-300 group-hover:text-accent">
-            0{index + 1}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="md:hidden text-muted-foreground transition-transform duration-300" style={{ transform: expanded ? 'rotate(45deg)' : 'rotate(0deg)' }}>
+              +
+            </span>
+            <span className="eyebrow transition-colors duration-300 group-hover:text-accent hidden md:inline">
+              0{index + 1}
+            </span>
+          </div>
         </div>
-        <p className="mt-4 text-sm text-muted-foreground/80 leading-relaxed">
-          {member.bio}
-        </p>
+
+        {/* Mobile: hidden by default, expands on tap */}
+        <div className="md:hidden">
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                key="bio"
+                initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                animate={{ height: "auto", opacity: 1, marginTop: 16 }}
+                exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                transition={{ duration: 0.35, ease: defaultEase }}
+                className="overflow-hidden"
+              >
+                <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                  {member.bio}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop: always visible */}
+        <div className="hidden md:block mt-4">
+          <p className="text-sm text-muted-foreground/80 leading-relaxed">
+            {member.bio}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -1279,13 +1376,13 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
 
 function TeamSection({ members, teamLabel }: { members: TeamMember[]; teamLabel: string }) {
   return (
-    <div className="mb-16 last:mb-0">
+    <div className="mb-10 md:mb-16 last:mb-0">
       <div className="eyebrow text-accent mb-8 md:mb-10 flex items-center gap-3">
         <span>{teamLabel}</span>
         <span className="h-px flex-1 bg-border" />
         <span className="text-muted-foreground">{members.length}</span>
       </div>
-      <StaggerReveal staggerDelay={0.1} className="grid md:grid-cols-3 gap-8 justify-items-center">
+      <StaggerReveal staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-8 justify-items-center">
         {members.map((m, i) => (
           <StaggerItem key={m.name} variant="blurIn" className="w-full max-w-md">
             <TeamCard member={m} index={i} />
@@ -1301,9 +1398,9 @@ function Team() {
   const businessTeam = TEAM.filter((m) => m.team === "Business & Growth");
 
   return (
-    <section id="team" className="container-x py-28 md:py-40">
+    <section id="team" className="container-x py-16 md:py-40">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-12 mb-16">
+        <div className="grid md:grid-cols-12 gap-12 mb-10 md:mb-16">
           <div className="md:col-span-5">
             <SectionLabel no="07" label="The team" />
             <h2 className="mt-6 font-display text-4xl md:text-6xl leading-[1.15]">
@@ -1361,10 +1458,10 @@ function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
     <div className="border-b border-border">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full text-left py-6 md:py-7 flex items-start gap-6 group"
+        className="w-full text-left py-4 md:py-7 flex items-start gap-4 md:gap-6 group"
       >
         <span className="eyebrow pt-2 shrink-0 w-10">{`0${i + 1}`}</span>
-        <span className="font-display text-2xl md:text-3xl flex-1 leading-tight group-hover:text-accent transition-colors duration-300">
+        <span className="font-display text-xl md:text-3xl flex-1 leading-tight group-hover:text-accent transition-colors duration-300">
           {q}
         </span>
         <span
@@ -1397,7 +1494,7 @@ function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
 function Faq() {
   return (
     <section id="faq" className="border-t border-border">
-      <div className="container-x py-28 md:py-36">
+      <div className="container-x py-16 md:py-36">
         <Reveal variant="slideDown">
           <div className="grid md:grid-cols-12 gap-12">
             <div className="md:col-span-4">
@@ -1435,7 +1532,7 @@ function Intake() {
   return (
     <section id="intake" className="relative border-t border-border bg-surface-elevated overflow-hidden">
       <div className="absolute -top-32 -right-20 w-[40rem] h-[40rem] rounded-full bg-accent/5 blur-3xl pointer-events-none" />
-      <div className="container-x py-28 md:py-40 relative">
+      <div className="container-x py-16 md:py-40 relative">
         <div className="grid md:grid-cols-12 gap-12 md:gap-20">
           <div className="md:col-span-5">
             <Reveal variant="slideLeft">
@@ -1473,6 +1570,7 @@ function Intake() {
 
           <div className="md:col-span-7">
             <Reveal variant="slideRight" delay={0.15}>
+              <div className="border border-border rounded-2xl p-7 md:p-10 bg-background">
               <AnimatePresence mode="wait">
                 {!submitted ? (
                   <motion.form
@@ -1544,10 +1642,10 @@ function Intake() {
                     <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">
                       We've logged your intake. Expect a personal reply from
                       a partner within one business day — usually faster.
-                    </p>
-                  </motion.div>
-                )}
+                    </p>                    </motion.div>
+                  )}
               </AnimatePresence>
+              </div>
             </Reveal>
           </div>
         </div>
