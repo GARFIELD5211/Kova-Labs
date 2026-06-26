@@ -603,20 +603,20 @@ function Hero() {
 
       <Nav />
 
-      <div className="relative container-x pt-40 md:pt-56 pb-24">
+      <div className="relative container-x pt-18 md:pt-30 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, ease: defaultEase }}
-          className="eyebrow mb-8"
+          className="eyebrow mb-4"
         >
           <span>Est. 2021 — Islamabad / Remote</span>
         </motion.div>
 
-        <h1 className="font-display text-5xl sm:text-7xl md:text-8xl leading-[1.05] max-w-5xl">
+        <h1 className="font-display text-5xl sm:text-7xl md:text-8xl leading-[0.95] max-w-5xl">
           <SplitReveal
             text="Software engineered for the"
-            className="block text-5xl sm:text-7xl md:text-8xl leading-[1.05]"
+            className="block text-5xl sm:text-7xl md:text-8xl leading-[0.95]"
             staggerDelay={0.06}
             threshold={0.5}
           />
@@ -624,7 +624,7 @@ function Hero() {
             initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.9, delay: 0.7, ease: defaultEase }}
-            className="block italic text-accent mt-2"
+            className="block italic text-accent mt-1"
           >
             uncompromising.
           </motion.span>
