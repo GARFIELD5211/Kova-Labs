@@ -166,6 +166,7 @@ type Project = {
   tags: string[];
   year: string;
   featured: boolean;
+  url?: string;
 };
 
 const ALL_PROJECTS: Project[] = [
@@ -175,6 +176,7 @@ const ALL_PROJECTS: Project[] = [
     title: "B2B travel agency CRM platform with dual admin/agent portals.",
     description:
       "Enterprise-grade CRM platform purpose-built for travel agencies. Features separate Administrator and Agent portals with global analytics, client relationship management, booking management, and real-time reporting — all wrapped in a sleek, dark-themed interface.",
+    url: "https://crm-lancer-9gl5.vercel.app/",
     metric: "Enterprise v4.12",
     metricLabel: "Dual-portal system",
     tags: ["React", "TypeScript", "Netlify", "CRM"],
@@ -187,6 +189,7 @@ const ALL_PROJECTS: Project[] = [
     title: "Full-service IT solutions platform for a growing digital agency.",
     description:
       "Complete digital presence and service platform for The VoiceStudio, an IT solutions provider offering call center management, digital marketing, web development, software design, and IT infrastructure management. Built with a modern, professional design showcasing their B2B service portfolio.",
+    url: "https://thevoicestudio.net",
     metric: "Founded 2020",
     metricLabel: "9 service verticals",
     tags: ["Web Dev", "UI/UX", "IT Solutions", "B2B"],
@@ -199,6 +202,7 @@ const ALL_PROJECTS: Project[] = [
     title: "Elegant jewellery e-commerce store with curated collections.",
     description:
       "A beautifully crafted online jewellery store for Ornibella Jewels, featuring exquisite product collections, detailed craftsmanship showcases, and a seamless shopping experience designed for discerning customers.",
+    url: "https://ornibellajewels.com/",
     metric: "Premium collections",
     metricLabel: "E-commerce platform",
     tags: ["Shopify", "E-Commerce", "UI/UX", "Jewellery"],
@@ -211,6 +215,7 @@ const ALL_PROJECTS: Project[] = [
     title: "Modern travel agency website with immersive destination showcases.",
     description:
       "A contemporary travel agency platform for Lancer Travels, featuring curated tour packages, destination guides, booking capabilities, and an intuitive user experience designed to inspire globetrotters.",
+    url: "https://lancertravels.netlify.app/",
     metric: "Multi-destination",
     metricLabel: "Travel platform",
     tags: ["Web Dev", "UI/UX", "Travel", "Netlify"],
@@ -223,6 +228,7 @@ const ALL_PROJECTS: Project[] = [
     title: "Natural products brand storefront with clean, organic design.",
     description:
       "A nature-inspired e-commerce platform for Asas Naturals, featuring product catalogues, brand storytelling, wellness education content, and a frictionless checkout experience for health-conscious consumers.",
+    url: "https://asasnaturals.com/",
     metric: "Wellness-focused",
     metricLabel: "Brand storefront",
     tags: ["E-Commerce", "Web Design", "UI/UX", "Branding"],
@@ -235,6 +241,7 @@ const ALL_PROJECTS: Project[] = [
     title: "Media broadcasting & production company digital presence.",
     description:
       "A professional digital platform for Broadcast UAE, a media and broadcasting company offering television production, digital marketing, media services, and content creation across the UAE market.",
+    url: "https://broadcastuae.net/",
     metric: "UAE market",
     metricLabel: "Media platform",
     tags: ["Web Dev", "Media", "UI/UX", "Broadcasting"],
@@ -247,6 +254,7 @@ const ALL_PROJECTS: Project[] = [
     title: "Technology solutions company website with modern engineering focus.",
     description:
       "A sleek, modern technology solutions platform for Xyntra Tech, showcasing their IT services, software development capabilities, tech consulting expertise, and client portfolio with a clean professional design.",
+    url: "https://xyntra.tech/",
     metric: "Tech solutions",
     metricLabel: "IT services platform",
     tags: ["Web Dev", "Tech", "UI/UX", "B2B"],
@@ -416,6 +424,23 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                         </span>
                       ))}
                     </div>
+
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${project.client} live site (opens in new tab)`}
+                        className="mt-5 inline-flex items-center gap-2 text-xs font-medium border border-border-strong px-4 py-2 rounded-full hover:bg-surface hover:border-accent/30 hover:text-accent transition-all duration-300"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Visit live site
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="transition-transform duration-300">
+                          <path d="M3.5 8.5L8.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                          <path d="M4.5 3.5H8.5V7.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               )}
@@ -449,6 +474,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   </span>
                 ))}
               </div>
+
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${project.client} live site (opens in new tab)`}
+                  className="mt-6 inline-flex items-center gap-2 text-xs font-medium border border-border-strong px-4 py-2.5 rounded-full hover:bg-surface hover:border-accent/30 hover:text-accent transition-all duration-300 group"
+                >
+                  Visit live site
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <path d="M3.5 8.5L8.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                    <path d="M4.5 3.5H8.5V7.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              )}
             </div>
           </div>
         </div>

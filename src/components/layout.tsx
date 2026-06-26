@@ -17,7 +17,6 @@ export function Nav() {
     ["Services", "/#services"],
     ["Process", "/#process"],
     ["Stack", "/#stack"],
-    ["Team", "/#team"],
   ];
 
   return (
@@ -30,15 +29,8 @@ export function Nav() {
     >
       <div className="container-x flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <span className="grid h-8 w-8 place-items-center border border-border-strong rounded-lg transition-all duration-300 group-hover:border-accent group-hover:bg-accent/5 group-hover:text-accent text-foreground">
-            <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none" role="img" aria-label="Kova Labs">
-              <title>Kova Labs</title>
-              <path d="M9 7v18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-              <path d="M9 16 22 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-              <path d="M9 17 22 25" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-              <path d="M23 10v14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-              <path d="M23 24h8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-            </svg>
+          <span className="grid h-8 w-8 place-items-center border border-border-strong transition-all duration-300 group-hover:border-accent">
+            <img src="/logo.jpg" alt="Kova Labs" className="h-full w-full object-cover" />
           </span>
           <span className="font-display text-lg tracking-tight">Kova Labs</span>
         </Link>
@@ -48,6 +40,13 @@ export function Nav() {
               {l}
             </a>
           ))}
+          <Link
+            to="/team"
+            className="hover:text-foreground transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+            activeProps={{ className: "text-foreground after:w-full" }}
+          >
+            Team
+          </Link>
           <Link
             to="/projects"
             className="hover:text-foreground transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
@@ -77,15 +76,8 @@ export function Footer() {
         <div className="grid md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center border border-border-strong rounded-xl text-accent">
-                <svg viewBox="0 0 32 32" className="h-6 w-6" fill="none" role="img" aria-label="Kova Labs">
-                  <title>Kova Labs</title>
-                  <path d="M9 7v18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                  <path d="M9 16 22 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-                  <path d="M9 17 22 25" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-                  <path d="M23 10v14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                  <path d="M23 24h8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
-                </svg>
+              <span className="grid h-10 w-10 place-items-center border border-border-strong">
+                <img src="/logo.jpg" alt="Kova Labs" className="h-full w-full object-cover" />
               </span>
               <span className="font-display text-2xl">Kova Labs</span>
             </div>
@@ -100,7 +92,7 @@ export function Footer() {
               <li><a href="/#work" className="hover:text-accent transition-colors">Work</a></li>
               <li><a href="/#services" className="hover:text-accent transition-colors">Services</a></li>
               <li><a href="/#process" className="hover:text-accent transition-colors">Process</a></li>
-              <li><a href="/#team" className="hover:text-accent transition-colors">Team</a></li>
+              <li><Link to="/team" className="hover:text-accent transition-colors">Team</Link></li>
               <li><Link to="/projects" className="hover:text-accent transition-colors">Projects</Link></li>
             </ul>
           </div>

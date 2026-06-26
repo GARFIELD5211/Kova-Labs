@@ -610,7 +610,7 @@ function Hero() {
           transition={{ duration: 0.8, ease: defaultEase }}
           className="eyebrow mb-8"
         >
-          <span>Est. 2021 — London / Remote</span>
+          <span>Est. 2021 — Islamabad / Remote</span>
         </motion.div>
 
         <h1 className="font-display text-5xl sm:text-7xl md:text-8xl leading-[1.05] max-w-5xl">
@@ -829,6 +829,7 @@ const CASES = [
     img: crmProject,
     client: "Kova Labs CRM",
     title: "B2B travel agency CRM platform with dual admin/agent portals.",
+    url: "https://crm-lancer-9gl5.vercel.app/",
     metric: "4.12",
     metricSuffix: "",
     metricLabel: "Enterprise version",
@@ -844,6 +845,7 @@ const CASES = [
     img: asasNaturalsScreenshot,
     client: "Asas Naturals",
     title: "Natural products brand storefront with clean, organic design.",
+    url: "https://asasnaturals.com/",
     metric: "2025",
     metricSuffix: "",
     metricLabel: "Natural wellness",
@@ -860,6 +862,7 @@ const CASES = [
     img: xyntraTechScreenshot,
     client: "Xyntra Tech",
     title: "Technology solutions company website with modern engineering focus.",
+    url: "https://xyntra.tech/",
     metric: "10",
     metricSuffix: "+",
     metricLabel: "Service verticals",
@@ -876,6 +879,7 @@ const CASES = [
     img: voicestudioScreenshot,
     client: "The VoiceStudio",
     title: "Full-service IT solutions platform for a growing digital agency.",
+    url: "https://thevoicestudio.net",
     metric: "2020",
     metricSuffix: "",
     metricLabel: "Founded",
@@ -892,6 +896,7 @@ const CASES = [
     img: lancerTravelsScreenshot,
     client: "Lancer Travels",
     title: "Modern travel agency website with immersive destination showcases.",
+    url: "https://lancertravels.netlify.app/",
     metric: "50",
     metricSuffix: "+",
     metricLabel: "Curated destinations",
@@ -1007,6 +1012,23 @@ function CaseStudyCard({ caseData: c, index: i }: { caseData: typeof CASES[numbe
                     </dd>
                   </div>
                 </dl>
+
+                {c.url && (
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${c.client} live site (opens in new tab)`}
+                    className="mt-5 inline-flex items-center gap-2 text-xs font-medium border border-border-strong px-4 py-2 rounded-full hover:bg-surface hover:border-accent/30 hover:text-accent transition-all duration-300"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Visit live site
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="transition-transform duration-300">
+                      <path d="M3.5 8.5L8.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                      <path d="M4.5 3.5H8.5V7.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
@@ -1037,6 +1059,22 @@ function CaseStudyCard({ caseData: c, index: i }: { caseData: typeof CASES[numbe
               </dd>
             </div>
           </dl>
+
+          {c.url && (
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${c.client} live site (opens in new tab)`}
+              className="mt-6 inline-flex items-center gap-2 text-xs font-medium border border-border-strong px-4 py-2.5 rounded-full hover:bg-surface hover:border-accent/30 hover:text-accent transition-all duration-300 group"
+            >
+              Visit live site
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <path d="M3.5 8.5L8.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                <path d="M4.5 3.5H8.5V7.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          )}
         </div>
       </div>
     </article>
@@ -1228,284 +1266,132 @@ function Stack() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/*                          Initials Avatar Placeholder                       */
-/* -------------------------------------------------------------------------- */
+/* ------------------------ Team CTA on Homepage ------------------------- */
 
-function getInitialsAvatar(name: string): string {
-  const parts = name.split(" ");
-  const initials =
-    parts.length >= 2
-      ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
-      : parts[0][0].toUpperCase();
-
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
-    <rect width="800" height="1000" fill="oklch(0.19 0.006 270)"/>
-    <rect width="800" height="1000" fill="url(#g)" opacity="0.08"/>
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="oklch(0.78 0.12 75)"/>
-        <stop offset="100%" stop-color="transparent"/>
-      </linearGradient>
-    </defs>
-    <text x="400" y="460" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="180" font-weight="700" fill="oklch(0.78 0.12 75 / 0.15)" letter-spacing="8">${initials}</text>
-    <line x1="280" y1="540" x2="520" y2="540" stroke="oklch(0.38 0.008 270)" stroke-width="1"/>
-  </svg>`;
-
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-}
-
-/* ---------------------------------- Team ---------------------------------- */
-
-type TeamMember = {
-  name: string;
-  role: string;
-  team: "Tech & Product" | "Business & Growth";
-  bio: string;
-};
-
-const TEAM: TeamMember[] = [
-  {
-    name: "Yasir Moeez",
-    role: "Chief Technology Officer (CTO)",
-    team: "Tech & Product",
-    bio: "Yasir drives the technical vision and system architecture of the company. As CTO, he oversees the core infrastructure, ensuring our software is secure, scalable, and built on high-performance frameworks. He leads the engineering strategy, transforming complex business requirements into robust technical realities.",
-  },
-  {
-    name: "M. Saad Malik",
-    role: "Lead Developer & UI/UX Engineer",
-    team: "Tech & Product",
-    bio: "Saad bridges the gap between aesthetic design and technical execution. Specializing in full-stack development and intuitive user interfaces, he engineers responsive, user-centric applications. Saad ensures that every product not only functions flawlessly under the hood but delivers a frictionless, engaging experience for the end-user.",
-  },
-  {
-    name: "Shaariff Mujtaba",
-    role: "Lead Developer & Product Designer",
-    team: "Tech & Product",
-    bio: "Shaariff co-pilots the product development lifecycle, blending deep coding expertise with modern design principles. He focuses on building out dynamic front-end architectures and refining the UX/UI. Shaariff ensures our software solutions are not just functional, but visually compelling and easy to navigate.",
-  },
-  {
-    name: "Usman Khalid",
-    role: "Chief Executive Officer (CEO)",
-    team: "Business & Growth",
-    bio: "Usman steers the strategic direction and operational execution of the startup. He is responsible for driving business growth, managing client relationships, and overseeing high-level company operations. Usman ensures the team's technical innovations align perfectly with market demands and business objectives.",
-  },
-  {
-    name: "Absaar Munawar",
-    role: "Head of Growth & Marketing",
-    team: "Business & Growth",
-    bio: "Absaar commands our digital presence and user acquisition strategies. From brand positioning to data-driven marketing campaigns, he connects our products with the right audience. Absaar translates our technical capabilities into compelling market narratives that drive conversion and scale.",
-  },
-];
-
-function TeamCard({ member, index }: { member: TeamMember; index: number }) {
-  const avatarSrc = getInitialsAvatar(member.name);
-  const [expanded, setExpanded] = useState(false);
-
+function TeamCta() {
   return (
-    <div
-      className="group cursor-pointer md:cursor-default"
-      onClick={() => setExpanded((v) => !v)}
-    >
-      <div className="relative overflow-hidden bg-surface rounded-2xl">
-        <motion.img
-          src={avatarSrc}
-          alt={member.name}
-          loading="lazy"
-          width={800}
-          height={1000}
-          className="w-full aspect-[4/5] object-cover transition-all duration-1000 ease-out"
-          whileHover={{ scale: 1.04 }}
-          transition={{ duration: 1.2, ease: defaultEase }}
-        />
-        <div className="absolute inset-0 ring-1 ring-inset ring-border/30 rounded-2xl" />
-      </div>
-      <div className="mt-5 border-t border-border pt-4">
-        <div className="flex items-baseline justify-between">
-          <div>
-            <div className="font-display text-xl group-hover:text-accent transition-colors duration-300">
-              {member.name}
-            </div>
-            <div className="text-xs text-muted-foreground mt-1">{member.role}</div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="md:hidden text-muted-foreground transition-transform duration-300" style={{ transform: expanded ? 'rotate(45deg)' : 'rotate(0deg)' }}>
-              +
-            </span>
-            <span className="eyebrow transition-colors duration-300 group-hover:text-accent hidden md:inline">
-              0{index + 1}
-            </span>
-          </div>
-        </div>
-
-        {/* Mobile: hidden by default, expands on tap */}
-        <div className="md:hidden">
-          <AnimatePresence initial={false}>
-            {expanded && (
-              <motion.div
-                key="bio"
-                initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                animate={{ height: "auto", opacity: 1, marginTop: 16 }}
-                exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                transition={{ duration: 0.35, ease: defaultEase }}
-                className="overflow-hidden"
-              >
-                <p className="text-sm text-muted-foreground/80 leading-relaxed">
-                  {member.bio}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Desktop: always visible */}
-        <div className="hidden md:block mt-4">
-          <p className="text-sm text-muted-foreground/80 leading-relaxed">
-            {member.bio}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TeamSection({ members, teamLabel }: { members: TeamMember[]; teamLabel: string }) {
-  return (
-    <div className="mb-10 md:mb-16 last:mb-0">
-      <div className="eyebrow text-accent mb-8 md:mb-10 flex items-center gap-3">
-        <span>{teamLabel}</span>
-        <span className="h-px flex-1 bg-border" />
-        <span className="text-muted-foreground">{members.length}</span>
-      </div>
-      <StaggerReveal staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-8 justify-items-center">
-        {members.map((m, i) => (
-          <StaggerItem key={m.name} variant="blurIn" className="w-full max-w-md">
-            <TeamCard member={m} index={i} />
-          </StaggerItem>
-        ))}
-      </StaggerReveal>
-    </div>
-  );
-}
-
-function Team() {
-  const techTeam = TEAM.filter((m) => m.team === "Tech & Product");
-  const businessTeam = TEAM.filter((m) => m.team === "Business & Growth");
-
-  return (
-    <section id="team" className="container-x py-16 md:py-40">
+    <section className="container-x py-16 md:py-28">
       <Reveal variant="slideDown">
-        <div className="grid md:grid-cols-12 gap-8 mb-8 md:mb-12">
-          <div className="md:col-span-5">
-            <SectionLabel no="07" label="The team" />
-            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05] tracking-tight">
-              <SplitReveal text="The people" />
-              <span className="italic text-muted-foreground block mt-0">
-                <SplitReveal text="behind the work." staggerDelay={0.03} delay={0.25} />
-              </span>
-            </h2>
-          </div>
-          <div className="md:col-span-6 md:col-start-7 self-end">
-            <p className="text-muted-foreground leading-relaxed">
-              A lean, senior team spanning engineering, design, product, and
-              growth — each bringing deep expertise and a shared commitment
-              to craft.
-            </p>
+        <div className="text-center">
+          <SectionLabel no="07" label="The team" />
+          <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05] tracking-tight">
+            <SplitReveal text="The people" />
+            <span className="italic text-muted-foreground block mt-0">
+              <SplitReveal text="behind the work." staggerDelay={0.03} delay={0.25} />
+            </span>
+          </h2>
+          <p className="mt-6 text-muted-foreground max-w-lg mx-auto leading-relaxed">
+            A lean, senior team spanning engineering, design, product, and
+            growth — each bringing deep expertise and a shared commitment
+            to craft.
+          </p>
+          <div className="mt-10">
+            <Link
+              to="/team"
+              className="group inline-flex items-center gap-3 border border-border-strong px-8 py-5 text-sm font-medium rounded-full hover:bg-surface hover:border-accent/30 transition-all duration-300"
+            >
+              <span>Meet the team</span>
+              <span className="transition-all duration-300 group-hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
       </Reveal>
-
-      <TeamSection members={techTeam} teamLabel="Tech & Product" />
-      <TeamSection members={businessTeam} teamLabel="Business & Growth" />
     </section>
   );
 }
 
-/* ---------------------------------- FAQ ----------------------------------- */
+/* ----------------------------- Testimonials ----------------------------- */
 
-const FAQ = [
+const TESTIMONIALS = [
   {
-    q: "Do you outsource your development?",
-    a: "No. Every line of code is written by our core, in-house engineers in London. We don't subcontract, white-label, or hand-off to overseas teams.",
+    quote: "Kova Labs rebuilt our entire booking platform from scratch. The result was a 40% improvement in conversion rate and a system that actually scales with our growth.",
+    author: "Sarah Chen",
+    role: "CEO",
+    company: "Lancer Travels",
   },
   {
-    q: "How do you handle post-launch support?",
-    a: "Every build ships with a 30-day warranty covering any defect. After that, you can choose a fixed-scope retainer or a per-sprint engagement.",
+    quote: "Working with this team felt less like outsourcing and more like having an in-house engineering department. The level of craft and communication is exceptional.",
+    author: "James Okonkwo",
+    role: "Founder",
+    company: "Xyntra Tech",
   },
   {
-    q: "What is your typical project timeline?",
-    a: "MVPs ship in 4–6 weeks. Production platforms typically run 10–16 weeks. Enterprise engagements scope individually after the discovery sprint.",
-  },
-  {
-    q: "What does an engagement cost?",
-    a: "MVPs from $24k. Production platforms $60k–$180k. We propose a fixed price after discovery — never time-and-materials surprises.",
-  },
-  {
-    q: "Will you sign an NDA?",
-    a: "Yes — happy to sign yours, or work under ours. We routinely build under strict confidentiality for funded startups and incumbents.",
+    quote: "They took our vision and built something better than we imagined. The design is beautiful, the code is clean, and the site performs flawlessly under load.",
+    author: "Aisha Patel",
+    role: "Creative Director",
+    company: "The VoiceStudio",
   },
 ];
 
-function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
-  const [open, setOpen] = useState(i === 0);
-  return (
-    <div className="border-b border-border">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full text-left py-4 md:py-7 flex items-start gap-4 md:gap-6 group"
-      >
-        <span className="eyebrow pt-2 shrink-0 w-10">{`0${i + 1}`}</span>
-        <span className="font-display text-xl md:text-3xl flex-1 leading-tight group-hover:text-accent transition-colors duration-300">
-          {q}
-        </span>
-        <span
-          className={`font-display text-3xl transition-all duration-500 shrink-0 ${
-            open ? "rotate-45 text-accent" : ""
-          }`}
-        >
-          +
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: defaultEase }}
-            className="overflow-hidden"
-          >
-            <p className="pl-16 pr-12 pb-8 text-muted-foreground leading-relaxed max-w-3xl">
-              {a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+function Testimonials() {
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-function Faq() {
   return (
-    <section id="faq" className="border-t border-border">
-      <div className="container-x py-16 md:py-36">
+    <section className="border-t border-border bg-surface/20 overflow-hidden">
+      <div className="container-x py-16 md:py-28">
         <Reveal variant="slideDown">
-          <div className="grid md:grid-cols-12 gap-12">
-            <div className="md:col-span-4">
-              <SectionLabel no="08" label="Direct answers" />
-              <h2 className="mt-4 font-display text-4xl md:text-5xl leading-[1.05]">
-                No fluff.<br />
-                <span className="italic text-muted-foreground">Just answers.</span>
+          <div className="grid md:grid-cols-12 gap-8 mb-10 md:mb-14">
+            <div className="md:col-span-5">
+              <SectionLabel no="08" label="Testimonials" />
+              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[1.05]">
+                <SplitReveal text="What clients" />
+                <span className="italic text-muted-foreground block">
+                  <SplitReveal text="say about us." staggerDelay={0.03} delay={0.25} />
+                </span>
               </h2>
             </div>
-            <div className="md:col-span-8">
-              <div className="border-t border-border">
-                {FAQ.map((f, i) => (
-                  <FaqItem key={f.q} i={i} {...f} />
-                ))}
-              </div>
+            <div className="md:col-span-6 md:col-start-7 self-end">
+              <p className="text-muted-foreground leading-relaxed">
+                Don't take our word for it. Here's what the founders and
+                teams we've worked with have to say.
+              </p>
             </div>
           </div>
         </Reveal>
+
+        {/* Horizontal scroll wheel */}
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {TESTIMONIALS.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: defaultEase }}
+              className="min-w-[340px] md:min-w-[420px] lg:min-w-[480px] snap-start shrink-0"
+            >
+              <div className="h-full card-rounded p-5 md:p-8 lg:p-12 flex flex-col group hover:bg-surface transition-all duration-500">
+                {/* Decorative quote mark — like the floating number in process */}
+                <div className="flex items-baseline justify-between">
+                  <Floating delay={i * 0.15}>
+                    <span className="font-display text-6xl transition-colors duration-500 group-hover:text-accent">
+                      &ldquo;
+                    </span>
+                  </Floating>
+                  <span className="eyebrow">Testimonial</span>
+                </div>
+                <p className="mt-12 text-sm md:text-base text-foreground/90 leading-relaxed flex-1">
+                  {t.quote}
+                </p>
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="grid h-10 w-10 place-items-center border border-border-strong rounded-full bg-surface text-xs font-semibold text-muted-foreground group-hover:text-accent transition-all duration-300">
+                    {t.author.split(" ").map((n) => n[0]).join("")}
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium">{t.author}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {t.role}, {t.company}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1720,9 +1606,9 @@ function Landing() {
       <ParallaxDivider />
       <Stack />
       <ParallaxDivider />
-      <Team />
+      <TeamCta />
       <ParallaxDivider />
-      <Faq />
+      <Testimonials />
       <Intake />
       <Footer />
     </main>
