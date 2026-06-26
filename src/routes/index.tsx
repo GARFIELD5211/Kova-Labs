@@ -1318,7 +1318,7 @@ const TESTIMONIALS = [
   {
     quote: "They took our vision and built something better than we imagined. The design is beautiful, the code is clean, and the site performs flawlessly under load.",
     author: "Bushra Kanwal",
-    role: "Creative Director",
+    role: "CEO",
     company: "The VoiceStudio",
   },
 ];
