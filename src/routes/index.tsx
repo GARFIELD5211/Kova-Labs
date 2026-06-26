@@ -1324,8 +1324,6 @@ const TESTIMONIALS = [
 ];
 
 function Testimonials() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
   return (
     <section className="border-t border-border bg-surface/20 overflow-hidden">
       <div className="container-x py-16 md:py-28">
@@ -1349,35 +1347,24 @@ function Testimonials() {
           </div>
         </Reveal>
 
-        {/* Horizontal scroll wheel */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
+        {/* Grid layout matching the Process section */}
+        <StaggerReveal staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {TESTIMONIALS.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: defaultEase }}
-              className="min-w-[340px] md:min-w-[420px] lg:min-w-[480px] snap-start shrink-0"
-            >
-              <div className="h-full card-rounded p-5 md:p-8 lg:p-12 flex flex-col group hover:bg-surface transition-all duration-500">
-                {/* Decorative quote mark — like the floating number in process */}
+            <StaggerItem key={i} variant="scaleIn">
+              <div className="h-full card-rounded p-5 md:p-8 lg:p-10 flex flex-col group hover:bg-surface transition-all duration-500">
+                {/* Decorative quote mark */}
                 <div className="flex items-baseline justify-between">
                   <Floating delay={i * 0.15}>
-                    <span className="font-display text-6xl transition-colors duration-500 group-hover:text-accent">
+                    <span className="font-display text-5xl transition-colors duration-500 group-hover:text-accent">
                       &ldquo;
                     </span>
                   </Floating>
                   <span className="eyebrow">Testimonial</span>
                 </div>
-                <p className="mt-12 text-sm md:text-base text-foreground/90 leading-relaxed flex-1">
+                <p className="mt-10 text-sm md:text-base text-foreground/90 leading-relaxed flex-1">
                   {t.quote}
                 </p>
-                <div className="mt-8 flex items-center gap-4">
+                <div className="mt-6 flex items-center gap-4">
                   <div className="grid h-10 w-10 place-items-center border border-border-strong rounded-full bg-surface text-xs font-semibold text-muted-foreground group-hover:text-accent transition-all duration-300">
                     {t.author.split(" ").map((n) => n[0]).join("")}
                   </div>
@@ -1389,9 +1376,9 @@ function Testimonials() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );
