@@ -1305,7 +1305,7 @@ function TeamCta() {
 const TESTIMONIALS = [
   {
     quote: "Kova Labs rebuilt our entire booking platform from scratch. The result was a 40% improvement in conversion rate and a system that actually scales with our growth.",
-    author: "Sarah Chen",
+    author: "Taha Naveed",
     role: "CEO",
     company: "Lancer Travels",
   },
@@ -1317,7 +1317,7 @@ const TESTIMONIALS = [
   },
   {
     quote: "They took our vision and built something better than we imagined. The design is beautiful, the code is clean, and the site performs flawlessly under load.",
-    author: "Aisha Patel",
+    author: "Bushra Kanwal",
     role: "Creative Director",
     company: "The VoiceStudio",
   },
