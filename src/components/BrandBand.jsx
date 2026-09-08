@@ -125,15 +125,7 @@ export default function BrandBand() {
       <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(70% 45% at 50% 0%, rgba(59,130,246,0.14), transparent 60%)" }} />
 
       {/* W. Nominee tab pinned to the right edge */}
-      <aside
-        className="absolute right-0 top-24 z-10 hidden flex-col items-center gap-4 bg-white px-3.5 py-6 text-night-950 shadow-2xl md:flex"
-        aria-hidden="true"
-      >
-        <span className="text-2xl font-extrabold leading-none">W.</span>
-        <span className="text-[11px] font-semibold tracking-[0.18em] [writing-mode:vertical-rl]">
-          Nominee
-        </span>
-      </aside>
+      
 
       <div className="relative pt-20">
         {/* eyebrow */}
