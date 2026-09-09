@@ -27,9 +27,21 @@ export default function Team() {
             <Reveal key={m.name} delay={i * 90} from="tilt" className="h-full">
               <article className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:p-7 transition duration-300 hover:-translate-y-1 hover:border-accent-400/30">
                 <div className="flex items-center justify-between">
-                  <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-accent-500/15 font-extrabold text-accent-400 text-sm sm:text-base">
-                    {m.initials}
-                  </span>
+                  <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-2xl border border-white/15 bg-white/5 shadow-md shrink-0">
+                    {m.image ? (
+                      <img
+                        src={m.image}
+                        alt={m.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <span className="flex h-full w-full items-center justify-center bg-accent-500/15 font-extrabold text-accent-400 text-sm sm:text-base">
+                        {m.initials}
+                      </span>
+                    )}
+                    <span className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-night-950" title="Active in Islamabad" />
+                  </div>
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] sm:text-[11px] font-medium text-white/50">
                     {m.group}
                   </span>

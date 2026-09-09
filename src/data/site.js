@@ -237,6 +237,7 @@ export const TEAM = {
       name: "Yasir Moeez",
       role: "Chief Technology Officer (CTO)",
       group: "Tech & Product",
+      image: "/team/yasir-moeez.jpg",
       bio: "Owns the technical vision and architecture — keeping every system secure, scalable and built on high-performance frameworks.",
     },
     {
@@ -244,6 +245,7 @@ export const TEAM = {
       name: "M. Saad Malik",
       role: "Lead Developer & UI/UX Engineer",
       group: "Tech & Product",
+      image: "/team/saad-malik.jpg",
       bio: "Bridges aesthetic design and technical execution — full-stack builds that feel as good as they look.",
     },
     {
@@ -251,6 +253,7 @@ export const TEAM = {
       name: "Shaariff Mujtaba",
       role: "Lead Developer & Product Designer",
       group: "Tech & Product",
+      image: "/team/shaariff-mujtaba.jpg",
       bio: "Co-pilots the product lifecycle — dynamic front-end architecture refined by sharp UX/UI craft.",
     },
     {
@@ -258,6 +261,7 @@ export const TEAM = {
       name: "Absaar Munawar",
       role: "Finance Manager",
       group: "Business & Growth",
+      image: "/team/absaar-munawar.jpg",
       bio: "Directs financial strategy, resource allocation, and operational budgeting — ensuring healthy fiscal discipline as the firm scales.",
     },
     {
@@ -265,6 +269,7 @@ export const TEAM = {
       name: "Hobdar Haider",
       role: "Head of Growth & Marketing",
       group: "Business & Growth",
+      image: "/team/hobdar-haider.jpg",
       bio: "Owns brand positioning and acquisition — turning technical capability into narratives that convert and scale.",
     },
   ],

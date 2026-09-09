@@ -108,14 +108,14 @@ const BRANDS = [Google, Meta, GitHub, Figma, Tailwind, ReactMark, Vite, Notion, 
 
 const PROOF = {
   avatars: [
-    "https://randomuser.me/api/portraits/men/32.jpg",
-    "https://randomuser.me/api/portraits/women/44.jpg",
-    "https://randomuser.me/api/portraits/men/45.jpg",
-    "https://randomuser.me/api/portraits/women/68.jpg",
-    "https://randomuser.me/api/portraits/men/76.jpg",
+    "/avatars/avatar-1.jpg",
+    "/avatars/avatar-2.jpg",
+    "/avatars/avatar-3.jpg",
+    "/avatars/avatar-4.jpg",
+    "/avatars/avatar-5.jpg",
   ],
-  rating: "4,9",
-  line: "Over 600 SMEs in Switzerland already trust us",
+  rating: "4.9",
+  line: "Trusted by 50+ scaling startups & enterprises worldwide",
 };
 
 export default function BrandBand() {
