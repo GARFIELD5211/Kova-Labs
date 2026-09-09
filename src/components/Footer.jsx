@@ -32,32 +32,32 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-night-950 text-white">
+    <footer className="relative overflow-hidden w-full max-w-full border-t border-white/10 bg-night-950 text-white">
       {/* soft flow edge matching the hero */}
       <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[900px] -translate-x-1/2 rounded-[100%] bg-accent-500/10 blur-[90px]" />
       <div className="pointer-events-none absolute -top-1 left-0 h-px w-full bg-gradient-to-r from-transparent via-accent-400/40 to-transparent" />
 
-      <div className="container-x relative py-16">
+      <div className="container-x relative py-12 sm:py-16">
         <Reveal>
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
-          <div>
+        <div className="grid gap-8 sm:gap-12 grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
+          <div className="col-span-2 lg:col-span-1">
             <Logo dark className="text-lg" />
-            <p className="mt-4 max-w-xs text-sm text-white/50">
+            <p className="mt-3 sm:mt-4 max-w-xs text-xs sm:text-sm text-white/50 leading-relaxed">
               {BRAND.tagline} — based in Islamabad, shipping worldwide.
             </p>
-            <p className="mt-6 text-sm text-white/40">{BRAND.location}</p>
+            <p className="mt-4 sm:mt-6 text-xs sm:text-sm text-white/40">{BRAND.location}</p>
           </div>
 
           {COLUMNS.map((col) => (
             <div key={col.title}>
-              <h3 className="text-sm font-semibold">{col.title}</h3>
-              <ul className="mt-4 space-y-3">
+              <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-white/80">{col.title}</h3>
+              <ul className="mt-3 sm:mt-4 space-y-2.5 sm:space-y-3">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <a
                       href={l.href}
                       {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                      className="inline-block text-sm text-white/55 transition duration-300 hover:translate-x-1 hover:text-white"
+                      className="inline-block text-xs sm:text-sm text-white/55 transition duration-300 hover:translate-x-1 hover:text-white"
                     >
                       {l.label}
                     </a>
@@ -70,16 +70,16 @@ export default function Footer() {
         </Reveal>
 
         {/* giant parallax wordmark */}
-        <div aria-hidden="true" className="pointer-events-none mt-16 select-none overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none mt-12 sm:mt-16 select-none overflow-hidden w-full max-w-full">
           <div
             data-parallax-x="0.12"
-            className="text-outline-white -mb-[0.16em] whitespace-nowrap text-center text-[16vw] font-extrabold leading-[0.85] tracking-tight opacity-30 will-change-transform"
+            className="text-outline-white -mb-[0.16em] whitespace-nowrap text-center text-[13vw] font-extrabold leading-[0.85] tracking-tight opacity-30 will-change-transform"
           >
             KOVALABS.
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-sm text-white/40 sm:flex-row">
+        <div className="mt-8 sm:mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:pt-8 text-xs sm:text-sm text-white/40 sm:flex-row text-center sm:text-left">
           <p>© 2026 {BRAND.name}. All rights reserved.</p>
           <p>Engineered, not outsourced.</p>
         </div>

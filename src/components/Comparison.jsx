@@ -25,7 +25,7 @@ export default function Comparison() {
   const last = COMPARE.columns.length;
 
   return (
-    <section id="compare" className="scroll-mt-24 bg-white py-24">
+    <section id="compare" className="scroll-mt-24 bg-white py-16 sm:py-24 overflow-hidden w-full max-w-full">
       <div className="container-x">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Why us</p>
@@ -38,28 +38,31 @@ export default function Comparison() {
         </Reveal>
 
         <Reveal delay={150} from="scale">
-          <div className="card mt-14 overflow-x-auto">
-            <table className="w-full min-w-[640px] border-collapse text-left">
+          <div className="mt-8 flex items-center justify-center gap-2 text-xs font-medium text-night-950/45 md:hidden">
+            <span>← Swipe horizontally to compare →</span>
+          </div>
+          <div className="card mt-3 md:mt-14 overflow-x-auto w-full max-w-full shadow-[0_24px_60px_-35px_rgba(15,30,60,0.25)]">
+            <table className="w-full min-w-[580px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-ice-200 bg-ice-50">
-                  <th className="px-6 py-5 text-sm font-semibold text-night-950/50">
+                  <th className="px-4 py-4 sm:px-6 sm:py-5 text-xs sm:text-sm font-semibold text-night-950/50">
                     What matters
                   </th>
                   {COMPARE.columns.map((c, i) => (
                     <th
                       key={c.name}
-                      className={`px-6 py-5 ${
+                      className={`px-4 py-4 sm:px-6 sm:py-5 ${
                         i === last - 1 ? "bg-accent-500/[0.06]" : ""
                       }`}
                     >
                       <span
-                        className={`block text-sm font-bold ${
+                        className={`block text-xs sm:text-sm font-bold ${
                           i === last - 1 ? "text-accent-600" : "text-night-950"
                         }`}
                       >
                         {c.name}
                       </span>
-                      <span className="block text-xs font-medium text-night-950/45">
+                      <span className="block text-[11px] sm:text-xs font-medium text-night-950/45">
                         {c.sub}
                       </span>
                     </th>
@@ -72,11 +75,11 @@ export default function Comparison() {
                     key={label}
                     className="border-b border-ice-200 transition-colors last:border-0 hover:bg-ice-50"
                   >
-                    <td className="px-6 py-4 text-sm font-medium">{label}</td>
+                    <td className="px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm font-medium">{label}</td>
                     {vals.map((v, i) => (
                       <td
                         key={i}
-                        className={`px-6 py-4 transition-colors ${
+                        className={`px-4 py-3.5 sm:px-6 sm:py-4 transition-colors ${
                           i === vals.length - 1 ? "bg-accent-500/[0.06]" : ""
                         }`}
                       >
@@ -90,7 +93,7 @@ export default function Comparison() {
           </div>
         </Reveal>
 
-        <p className="mt-6 text-center text-sm text-night-950/45">
+        <p className="mt-6 text-center text-xs sm:text-sm text-night-950/45">
           The difference: the five people you meet are the five people who
           build.
         </p>

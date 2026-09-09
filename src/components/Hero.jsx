@@ -1,92 +1,75 @@
-import { useEffect, useRef } from "react";
+import React from "react";
+import { FloatingIconsHero, demoIcons } from "@/components/ui/floating-icons-hero-section";
+import { Button } from "@/components/ui/button";
 import FlowScene from "./FlowScene.jsx";
-import { BRAND } from "../data/site.js";
+import { BRAND, HERO } from "../data/site.js";
 
-/**
- * Hero — exact Nordpixel-style: a full-viewport living dark scene with
- * nothing but the giant wordmark and a scroll cue. No nav, no badges,
- * no CTAs — the wordmark IS the hero.
- */
 export default function Hero() {
-  const markRef = useRef(null);
-
-  /* letter-spacing contracts on load — the nordpixel brandIn animation */
-  useEffect(() => {
-    const el = markRef.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.style.letterSpacing = "0.14em";
-      return;
-    }
-    el.style.letterSpacing = "0.3em";
-    el.style.opacity = "0";
-    /* force style flush before transitioning */
-    void el.offsetWidth;
-    el.style.transition = "letter-spacing 2.6s cubic-bezier(0.16,1,0.3,1), opacity 1.4s ease 0.15s";
-    requestAnimationFrame(() => {
-      el.style.letterSpacing = "0.14em";
-      el.style.opacity = "1";
-    });
-  }, []);
-
-  /* subtle scroll drift on the background scene */
-  const bgRef = useRef(null);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        if (!bgRef.current) return;
-        const y = window.scrollY;
-        bgRef.current.style.transform = `translate3d(0, ${(y * 0.25).toFixed(1)}px, 0)`;
-        bgRef.current.style.opacity = `${Math.max(0, 1 - y / (window.innerHeight * 0.9)).toFixed(3)}`;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
-    <section id="top" className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-[#0A0E14] text-center">
-      {/* living background — dune scene + fog + stars, drifting slowly */}
-      <div ref={bgRef} className="absolute inset-0 z-0 will-change-transform">
+    <div className="relative w-full overflow-hidden bg-[#0A0E14]">
+      {/* Living ambient background scene with cosmic stars & dune glow */}
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-60">
         <FlowScene id="hero-scene" stars className="!top-auto h-full" />
-        {/* cinematic vignette — same recipe as nordpixel */}
+        {/* Cinematic radial vignette to enhance floating icon contrast */}
         <div
-          className="pointer-events-none absolute inset-0"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(120% 90% at 50% 40%, transparent 30%, rgba(10,14,20,0.55) 100%), linear-gradient(180deg, rgba(10,14,20,0.72) 0%, rgba(10,14,20,0.34) 30%, rgba(10,14,20,0.42) 60%, rgba(10,14,20,0.9) 88%, #0A0E14 100%)",
+              "radial-gradient(110% 85% at 50% 45%, rgba(46, 107, 255, 0.08) 0%, rgba(10, 14, 20, 0.4) 50%, #0A0E14 95%)",
           }}
         />
       </div>
 
-      {/* the wordmark — the only content, like nordpixel */}
-      <div className="relative z-10 px-4">
-        <p
-          ref={markRef}
-          className="select-none whitespace-nowrap text-[clamp(2.4rem,10.5vw,8.25rem)] font-bold leading-[1.05] text-[#F4F8FD]"
-          style={{ marginRight: "-0.14em", textShadow: "0 2px 16px rgba(6,10,16,0.6), 0 10px 70px rgba(6,10,16,0.55)" }}
-        >
-          KOVALABS<span className="punkt">.</span>
-        </p>
-      </div>
-
-      {/* scroll cue — centered line dropping, exactly like nordpixel */}
-      <a
-        href="#work"
-        className="absolute bottom-9 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2.5"
-        aria-label="Scroll to work"
+      {/* Floating Icons Hero Section */}
+      <FloatingIconsHero
+        id="top"
+        className="relative z-10 !bg-transparent min-h-[100svh] pt-24 pb-12 sm:pt-28 sm:pb-16"
+        icons={demoIcons}
+        title={
+          <div className="flex flex-col items-center">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-accent-400 mb-5 sm:mb-6 shadow-sm max-w-[92vw] text-center">
+              <span className="inline-block w-2 h-2 rounded-full bg-accent-500 animate-pulse shrink-0" />
+              <span className="truncate">{HERO.eyebrow}</span>
+            </span>
+            <span className="block text-[clamp(2.5rem,8.5vw,6.5rem)] font-extrabold tracking-tight text-[#F4F8FD] leading-[1.04]">
+              {HERO.headline}
+              <span className="text-accent-500 punkt">.</span>
+            </span>
+          </div>
+        }
+        subtitle={HERO.sub}
       >
-        <span className="text-[10.5px] font-medium uppercase tracking-[0.3em] text-white/45">
-          Scroll
-        </span>
-        <i className="scrolldrop block h-[42px] w-px origin-top bg-gradient-to-b from-accent-400 to-transparent" />
-      </a>
-    </section>
+        {/* Action CTAs */}
+        <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
+          <Button
+            asChild
+            size="lg"
+            className="w-full sm:w-auto h-12 px-8 rounded-full bg-accent-500 hover:bg-accent-400 text-white font-semibold text-sm shadow-[0_16px_36px_-12px_rgba(46,107,255,0.7)] hover:shadow-[0_22px_44px_-12px_rgba(46,107,255,0.85)] hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
+          >
+            <a href="#work">Explore Our Work</a>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="w-full sm:w-auto h-12 px-8 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm backdrop-blur-md hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
+          >
+            <a href={BRAND.emailUrl}>Start a Project</a>
+          </Button>
+        </div>
+
+        {/* Scroll cue dropping toward work section */}
+        <a
+          href="#work"
+          className="mt-14 flex flex-col items-center gap-2.5 text-white/40 hover:text-white/80 transition-colors"
+          aria-label="Scroll to work"
+        >
+          <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/45">
+            Scroll
+          </span>
+          <i className="scrolldrop block h-[36px] w-px origin-top bg-gradient-to-b from-accent-400 to-transparent" />
+        </a>
+      </FloatingIconsHero>
+    </div>
   );
 }

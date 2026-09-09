@@ -120,17 +120,14 @@ const PROOF = {
 
 export default function BrandBand() {
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#13224a_0%,#0b0f19_35%,#0b0f19_100%)] text-white">
+    <section className="relative overflow-hidden w-full max-w-full bg-[linear-gradient(180deg,#13224a_0%,#0b0f19_35%,#0b0f19_100%)] text-white">
       {/* blue ambience */}
       <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(70% 45% at 50% 0%, rgba(59,130,246,0.14), transparent 60%)" }} />
 
-      {/* W. Nominee tab pinned to the right edge */}
-      
-
-      <div className="relative pt-20">
+      <div className="relative pt-16 sm:pt-20">
         {/* eyebrow */}
         <Reveal>
-          <p className="px-5 text-center text-xs font-semibold uppercase tracking-[0.35em] text-white/55">
+          <p className="px-4 text-center text-[10px] sm:text-xs font-semibold uppercase tracking-[0.32em] text-white/55">
             Programs &amp; Partners we work with
           </p>
         </Reveal>
@@ -138,7 +135,7 @@ export default function BrandBand() {
         {/* full-bleed logo marquee */}
         <Reveal delay={100}>
           <div
-            className="mt-10 overflow-hidden"
+            className="mt-8 sm:mt-10 overflow-hidden w-full max-w-full"
             style={{
               maskImage:
                 "linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)",
@@ -146,10 +143,10 @@ export default function BrandBand() {
                 "linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)",
             }}
           >
-            <div className="marquee-row flex w-max items-center gap-20 pr-20 sm:gap-28 sm:pr-28">
+            <div className="marquee-row flex w-max items-center gap-14 pr-14 sm:gap-28 sm:pr-28">
               {[...BRANDS, ...BRANDS].map((Icon, i) => (
                 <span key={i} className="shrink-0 opacity-95">
-                  <Icon />
+                  <Icon className="h-7 w-7 sm:h-10 sm:w-10" />
                 </span>
               ))}
             </div>
@@ -157,48 +154,48 @@ export default function BrandBand() {
         </Reveal>
 
         {/* headline + sub + cta + proof */}
-        <div className="mx-auto mt-16 max-w-5xl px-5 text-center sm:px-8">
-          <h2 className="text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-[5.2rem] lg:leading-[1.04]">
+        <div className="mx-auto mt-12 sm:mt-16 max-w-5xl px-4 text-center sm:px-8">
+          <h2 className="text-[clamp(2.1rem,7.5vw,5.2rem)] font-extrabold tracking-tight leading-[1.08]">
             <RevealText text="Websites that convince" />
             <span className="text-accent-400">.</span>
           </h2>
 
           <Reveal delay={150}>
-            <p className="mx-auto mt-6 max-w-xl text-base text-white/70 sm:text-lg">
+            <p className="mx-auto mt-4 sm:mt-6 max-w-xl text-sm sm:text-lg text-white/70 leading-relaxed">
               First impressions decide. We turn outdated websites into modern,
               clear presences.
             </p>
           </Reveal>
 
           <Reveal delay={250}>
-            <a href="#work" className="btn-white mt-9">
+            <a href="#work" className="btn-white mt-7 sm:mt-9 !px-7 !py-3 text-sm font-semibold">
               View references
             </a>
           </Reveal>
 
           {/* photo avatars + google rating */}
           <Reveal delay={350}>
-            <div className="mt-10 flex items-center justify-center gap-4">
-              <div className="flex -space-x-2.5">
+            <div className="mt-9 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <div className="flex -space-x-2.5 shrink-0">
                 {PROOF.avatars.map((src) => (
                   <img
                     key={src}
                     src={src}
                     alt=""
                     loading="lazy"
-                    className="h-10 w-10 rounded-full border-2 border-[#0b0f19] bg-night-800 object-cover"
+                    className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-2 border-[#0b0f19] bg-night-800 object-cover"
                   />
                 ))}
               </div>
               <div className="text-left">
-                <p className="flex items-center gap-1.5 text-sm font-bold text-white">
-                  <Google className="h-4 w-4" />
+                <p className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white">
+                  <Google className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   {PROOF.rating}
                   <span className="tracking-tight text-[#f59e0b]" aria-label="5 stars">
                     ★★★★★
                   </span>
                 </p>
-                <p className="mt-0.5 text-sm text-white/60">{PROOF.line}</p>
+                <p className="mt-0.5 text-xs sm:text-sm text-white/60">{PROOF.line}</p>
               </div>
             </div>
           </Reveal>

@@ -9,7 +9,7 @@ const ICONS = { bolt: Bolt, cart: Cart, bot: Bot, rocket: Rocket, spark: Spark, 
 
 export default function Engagement() {
   return (
-    <section id="process" className="relative scroll-mt-24 overflow-hidden bg-ice-50 py-24">
+    <section id="process" className="relative scroll-mt-24 overflow-hidden bg-ice-50 py-16 sm:py-24 w-full max-w-full">
       <BgWord speed={0.22}>PROCESS</BgWord>
       <div className="container-x relative">
         <Reveal className="mx-auto max-w-2xl text-center">
@@ -23,36 +23,36 @@ export default function Engagement() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid gap-4 sm:gap-5 md:grid-cols-3">
           {PROCESS_STEPS.map((s, i) => (
             <Reveal key={s.step} delay={i * 120} from="scale" className="h-full">
-              <article className="card group h-full overflow-hidden p-7 transition duration-300 hover:-translate-y-1">
-                <span className="text-outline-dark block text-6xl font-extrabold transition duration-300 group-hover:text-accent-500/20">
+              <article className="card group h-full overflow-hidden p-5 sm:p-7 transition duration-300 hover:-translate-y-1">
+                <span className="text-outline-dark block text-5xl sm:text-6xl font-extrabold transition duration-300 group-hover:text-accent-500/20">
                   {s.step}
                 </span>
-                <h3 className="mt-5 text-lg font-bold">{s.title}</h3>
-                <p className="mt-0.5 text-xs font-semibold tracking-wide text-accent-500 uppercase">
+                <h3 className="mt-4 sm:mt-5 text-base sm:text-lg font-bold">{s.title}</h3>
+                <p className="mt-0.5 text-[11px] sm:text-xs font-semibold tracking-wide text-accent-500 uppercase">
                   {s.sub}
                 </p>
-                <p className="mt-2 text-sm text-night-950/55">{s.text}</p>
+                <p className="mt-2 text-xs sm:text-sm text-night-950/55 leading-relaxed">{s.text}</p>
               </article>
             </Reveal>
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {STATS.map(({ icon, value, label }, i) => {
             const Icon = ICONS[icon];
             return (
               <Reveal key={label} delay={i * 100}>
-                <div className="card group h-full p-6 transition duration-300 hover:-translate-y-1">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-500/10 text-accent-500 transition duration-300 group-hover:scale-110 group-hover:bg-accent-500/20">
-                    <Icon className="h-5 w-5" />
+                <div className="card group h-full p-4 sm:p-6 transition duration-300 hover:-translate-y-1">
+                  <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-accent-500/10 text-accent-500 transition duration-300 group-hover:scale-110 group-hover:bg-accent-500/20">
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </span>
-                  <p className="mt-4 text-3xl font-extrabold tracking-tight">
+                  <p className="mt-3 sm:mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight">
                     <CountUp to={parseInt(value, 10) || 0} />
                   </p>
-                  <p className="mt-1 text-sm text-night-950/50">{label}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-night-950/50">{label}</p>
                 </div>
               </Reveal>
             );
@@ -60,19 +60,19 @@ export default function Engagement() {
         </div>
 
         <Reveal delay={200}>
-          <div className="card mt-8 flex flex-col items-start justify-between gap-4 rounded-[2rem] p-6 sm:flex-row sm:items-center sm:p-8">
-            <div className="flex items-center gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-500/10 text-accent-500">
+          <div className="card mt-6 sm:mt-8 flex flex-col items-start justify-between gap-4 rounded-[2rem] p-5 sm:flex-row sm:items-center sm:p-8">
+            <div className="flex items-center gap-3.5 sm:gap-4">
+              <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-500/10 text-accent-500">
                 <Spark className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold">Tell us what you're building</p>
-                <p className="text-sm text-night-950/50">
+                <p className="font-semibold text-sm sm:text-base">Tell us what you're building</p>
+                <p className="text-xs sm:text-sm text-night-950/50">
                   One email — we reply with a scoped plan and a quote.
                 </p>
               </div>
             </div>
-            <a href={BRAND.emailUrl} className="btn-ghost shrink-0">
+            <a href={BRAND.emailUrl} className="btn-ghost shrink-0 w-full sm:w-auto text-center justify-center">
               {BRAND.email} <ArrowRight className="h-4 w-4" />
             </a>
           </div>

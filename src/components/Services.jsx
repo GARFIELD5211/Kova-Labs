@@ -22,7 +22,7 @@ const ICONS = {
 
 export default function Services() {
   return (
-    <section id="services" className="relative scroll-mt-24 overflow-hidden bg-white py-24">
+    <section id="services" className="relative scroll-mt-24 overflow-hidden bg-white py-16 sm:py-24 w-full max-w-full">
       <BgWord speed={-0.2}>BUILD</BgWord>
       <div className="container-x relative">
         <Reveal className="mx-auto max-w-2xl text-center">
@@ -35,22 +35,22 @@ export default function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map(({ num, icon, title, text }, i) => {
             const Icon = ICONS[icon];
             return (
               <Reveal key={title} delay={i * 100} from="scale" className="h-full">
-                <article className="card group flex h-full flex-col p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_70px_-40px_rgba(15,30,60,0.45)]">
+                <article className="card group flex h-full flex-col p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_70px_-40px_rgba(15,30,60,0.45)]">
                   <div className="flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-500/10 text-accent-500 transition duration-300 group-hover:scale-110 group-hover:bg-accent-500/20">
+                    <span className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-accent-500/10 text-accent-500 transition duration-300 group-hover:scale-110 group-hover:bg-accent-500/20">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <span className="text-outline-dark text-3xl font-extrabold">
+                    <span className="text-outline-dark text-2xl sm:text-3xl font-extrabold">
                       {num}
                     </span>
                   </div>
-                  <h3 className="mt-5 font-semibold">{title}</h3>
-                  <p className="mt-2 text-sm text-night-950/55">{text}</p>
+                  <h3 className="mt-4 sm:mt-5 font-semibold text-base">{title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm text-night-950/55 leading-relaxed">{text}</p>
                 </article>
               </Reveal>
             );

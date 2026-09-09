@@ -8,10 +8,10 @@ export default function FlowScene({ id, className = "", stars = false }) {
 
   return (
     <div
-      className={`pointer-events-none absolute inset-x-0 bottom-0 ${className}`}
+      className={`pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden ${className}`}
       aria-hidden="true"
     >
-      <div className="relative h-[360px] w-full sm:h-[460px]">
+      <div className="relative h-[360px] w-full overflow-hidden sm:h-[460px]">
         {/* soft horizon glow */}
         <div className="absolute top-[-40px] left-1/2 h-64 w-[560px] -translate-x-1/2 rounded-full bg-accent-400/[0.12] blur-[100px]" />
         {/* aurora arc */}

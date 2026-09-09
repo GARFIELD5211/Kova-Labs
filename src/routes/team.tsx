@@ -268,18 +268,18 @@ const TEAM: TeamMember[] = [
     img: "/team/shaariff-mujtaba.jpg",
   },
   {
-    name: "Usman Khalid",
-    role: "Chief Executive Officer (CEO)",
+    name: "Absaar Munawar",
+    role: "Finance Manager",
     team: "Business & Growth",
-    bio: "Usman steers the strategic direction and operational execution of the startup. He is responsible for driving business growth, managing client relationships, and overseeing high-level company operations. Usman ensures the team's technical innovations align perfectly with market demands and business objectives.",
-    img: "/team/usman-khalid.jpg",
+    bio: "Absaar directs financial strategy, capital allocation, and operational budgeting. He ensures company growth remains sustainable, managing fiscal operations and aligning financial resources with our technical roadmap and expansion goals.",
+    img: "/team/absaar-munawar.jpg",
   },
   {
-    name: "Absaar Munawar",
+    name: "Hobdar Haider",
     role: "Head of Growth & Marketing",
     team: "Business & Growth",
-    bio: "Absaar commands our digital presence and user acquisition strategies. From brand positioning to data-driven marketing campaigns, he connects our products with the right audience. Absaar translates our technical capabilities into compelling market narratives that drive conversion and scale.",
-    img: "/team/absaar-munawar.jpg",
+    bio: "Hobdar commands our digital presence and user acquisition strategies. From brand positioning to data-driven marketing campaigns, he connects our products with the right audience. Hobdar translates our technical capabilities into compelling market narratives that drive conversion and scale.",
+    img: "/team/hobdar-haider.jpg",
   },
 ];
 

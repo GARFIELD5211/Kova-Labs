@@ -13,8 +13,8 @@ export const BRAND = {
 
 export const HERO = {
   eyebrow: "ENGINEERED SOFTWARE · ISLAMABAD → WORLDWIDE",
-  headline: "Software engineered for the uncompromising.",
-  sub: "A small studio of senior engineers shipping bespoke web platforms, AI tooling and revenue-grade commerce for founders who refuse mediocre software.",
+  headline: "KOVA LABS",
+  sub: "From vision to production: elite senior builders engineering high-performance digital infrastructure.",
 };
 
 export const SERVICES = [
@@ -147,6 +147,42 @@ export const PROJECTS = [
       "A contemporary travel platform with curated destination guides, tour package showcases, immersive imagery and an intuitive booking flow designed to convert.",
     stack: ["Web Dev", "UI/UX", "Travel", "Netlify"],
   },
+  {
+    client: "Broadcast UAE",
+    category: "Media & Broadcast",
+    image: "/projects/broadcast.jpg",
+    title: "Corporate media production, live broadcasting suite & content engine.",
+    url: "https://broadcastuae.net/",
+    urlLabel: "broadcastuae.net",
+    metric: "4K Live",
+    metricLabel: "Broadcasting Suite",
+    secondary: "Live production suite",
+    theme: "broadcast",
+    year: "2024",
+    problem:
+      "A media and broadcasting leader needed a high-performance web platform to present live broadcast capabilities, multi-camera suites and corporate event streaming services.",
+    solution:
+      "A bespoke high-converting digital platform with video showcases, equipment inventories, and an inquiry pipeline for live media productions across the UAE.",
+    stack: ["React", "Next.js", "Video", "Media"],
+  },
+  {
+    client: "Ornibella Jewels",
+    category: "Luxury E-Commerce",
+    image: "/projects/ornibella.jpg",
+    title: "High-end bespoke jewelry atelier & custom Shopify Plus storefront.",
+    url: "https://ornibellajewels.com/",
+    urlLabel: "ornibellajewels.com",
+    metric: "2025",
+    metricLabel: "Flagship Store",
+    secondary: "Bespoke Jewelry Atelier",
+    theme: "ornibella",
+    year: "2025",
+    problem:
+      "A luxury jewelry designer needed an international bespoke e-commerce experience reflecting heritage craftsmanship and white-glove buying experiences.",
+    solution:
+      "A custom headless Shopify Plus architecture with high-res product configurators, diamond grading storytelling, and high-conversion frictionless checkout.",
+    stack: ["Shopify Plus", "E-Commerce", "UX/UI", "CRO"],
+  },
 ];
 
 export const STATS = [
@@ -218,15 +254,15 @@ export const TEAM = {
       bio: "Co-pilots the product lifecycle — dynamic front-end architecture refined by sharp UX/UI craft.",
     },
     {
-      initials: "UK",
-      name: "Usman Khalid",
-      role: "Chief Executive Officer (CEO)",
-      group: "Business & Growth",
-      bio: "Steers strategy, growth and client relationships — keeping technical innovation aligned with market demands.",
-    },
-    {
       initials: "AM",
       name: "Absaar Munawar",
+      role: "Finance Manager",
+      group: "Business & Growth",
+      bio: "Directs financial strategy, resource allocation, and operational budgeting — ensuring healthy fiscal discipline as the firm scales.",
+    },
+    {
+      initials: "HH",
+      name: "Hobdar Haider",
       role: "Head of Growth & Marketing",
       group: "Business & Growth",
       bio: "Owns brand positioning and acquisition — turning technical capability into narratives that convert and scale.",
