@@ -12,9 +12,9 @@ export const BRAND = {
 };
 
 export const HERO = {
-  eyebrow: "ENGINEERED SOFTWARE · ISLAMABAD → WORLDWIDE",
-  headline: "KOVA LABS",
-  sub: "From vision to production: elite senior builders engineering high-performance digital infrastructure.",
+  eyebrow: "",
+  headline: "KOVALABS",
+  sub: "",
 };
 
 export const SERVICES = [

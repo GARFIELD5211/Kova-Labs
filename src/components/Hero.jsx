@@ -1,8 +1,6 @@
 import React from "react";
 import { FloatingIconsHero, demoIcons } from "@/components/ui/floating-icons-hero-section";
-import { Button } from "@/components/ui/button";
 import FlowScene from "./FlowScene.jsx";
-import { BRAND, HERO } from "../data/site.js";
 
 export default function Hero() {
   return (
@@ -20,56 +18,17 @@ export default function Hero() {
         />
       </div>
 
-      {/* Floating Icons Hero Section */}
+      {/* Floating Icons Hero Section - pure main brand typography only */}
       <FloatingIconsHero
         id="top"
-        className="relative z-10 !bg-transparent min-h-[100svh] pt-24 pb-12 sm:pt-28 sm:pb-16"
+        className="relative z-10 !bg-transparent min-h-[100svh] flex items-center justify-center pt-20 pb-16"
         icons={demoIcons}
         title={
-          <div className="flex flex-col items-center">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-accent-400 mb-5 sm:mb-6 shadow-sm max-w-[92vw] text-center">
-              <span className="inline-block w-2 h-2 rounded-full bg-accent-500 animate-pulse shrink-0" />
-              <span className="truncate">{HERO.eyebrow}</span>
-            </span>
-            <span className="block text-[clamp(2.5rem,8.5vw,6.5rem)] font-extrabold tracking-tight text-[#F4F8FD] leading-[1.04]">
-              {HERO.headline}
-              <span className="text-accent-500 punkt">.</span>
-            </span>
-          </div>
-        }
-        subtitle={HERO.sub}
-      >
-        {/* Action CTAs */}
-        <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
-          <Button
-            asChild
-            size="lg"
-            className="w-full sm:w-auto h-12 px-8 rounded-full bg-accent-500 hover:bg-accent-400 text-white font-semibold text-sm shadow-[0_16px_36px_-12px_rgba(46,107,255,0.7)] hover:shadow-[0_22px_44px_-12px_rgba(46,107,255,0.85)] hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
-          >
-            <a href="#work">Explore Our Work</a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="w-full sm:w-auto h-12 px-8 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm backdrop-blur-md hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
-          >
-            <a href={BRAND.emailUrl}>Start a Project</a>
-          </Button>
-        </div>
-
-        {/* Scroll cue dropping toward work section */}
-        <a
-          href="#work"
-          className="mt-14 flex flex-col items-center gap-2.5 text-white/40 hover:text-white/80 transition-colors"
-          aria-label="Scroll to work"
-        >
-          <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/45">
-            Scroll
+          <span className="block text-[clamp(3.2rem,11.5vw,8.5rem)] font-extrabold tracking-tight text-[#F4F8FD] leading-none whitespace-nowrap select-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]">
+            KOVALABS<span className="text-accent-500 punkt">.</span>
           </span>
-          <i className="scrolldrop block h-[36px] w-px origin-top bg-gradient-to-b from-accent-400 to-transparent" />
-        </a>
-      </FloatingIconsHero>
+        }
+      />
     </div>
   );
 }
